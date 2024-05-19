@@ -1,0 +1,35 @@
+A simple snippet toy to add a debug or whatever console to things.
+
+1) HTML:
+
+<div id="console"></div>
+
+2) CSS:
+
+#console{
+  background-color: black;
+  color: white;
+  font-family: Consolas;
+  font-size: 8px;
+  counter-reset: line;
+}
+#console code{
+  counter-increment: line;
+}
+#console code::before{
+  -webkit-user-select: none;
+  content: counter(line);
+  display: inline-block;
+  border-right: 1px solid #ddd;
+  padding: 2px;
+  margin-right: 2px;
+  color: white;
+}
+
+3) JavaScript:
+
+function outputToConsole(messageToConsole){
+ const displayDiv = document.getElementById('console');
+ displayDiv.innerHTML += `<code>${messageToConsole}</code><br>`;
+}
+
